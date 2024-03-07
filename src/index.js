@@ -30,7 +30,7 @@ fetchBreeds()
     breedSelect.addEventListener("change", () => {
       loaderElement.style.display = "block"; 
       errorElement.style.display = "none";
-      catInfoDiv.innerHTML = ''; // Clear the cat info when changing the breed
+      catInfoDiv.innerHTML = ''; 
 
       fetchCatByBreed(breedSelect.value)
         .then(post => {
@@ -61,16 +61,19 @@ fetchBreeds()
           console.error(err);
           errorElement.textContent = "Oops! Something went wrong! Try reloading the page!";
           errorElement.style.display = "block";
+          errorElement.style.color = "red";
+  errorElement.style.fontSize = "20px"; 
           loaderElement.style.display = "none";
         });
     });
 
-    // Fetch data for the initial breed
     fetchCatByBreed(breedSelect.value);
   })
   .catch(err => {
     console.error(err);
     errorElement.textContent = "Oops! Something went wrong! Try reloading the page!";
     errorElement.style.display = "block";
+    errorElement.style.color = "red";
+  errorElement.style.fontSize = "20px"; 
     loaderElement.style.display = "none";
   });
